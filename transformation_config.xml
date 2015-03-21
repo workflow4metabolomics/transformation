@@ -50,7 +50,7 @@ Workflow position
 | In the workflow example below, the intensities are first transformed, before the signal drift and batch-effects are corrected; finally, the data quality is evaluated numerically and visually.
 |
 
-.. image:: ./static/images/metabolomics/transformation_workflowPositionImage.png
+.. image:: ./static/images/transformation_workflowPositionImage.png
         :width: 600
 
 

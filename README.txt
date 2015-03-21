@@ -40,7 +40,7 @@ VI. Installation
 		R code containing the computational functions
 		
 	5) 'transformation_workflowPositionImage.png'
-		Image for the help section of the tool main page (as indicated in the 'transformation_config.xml' file); to be put into the './galaxy-dist/static/images/' directory		 
+		Image for the help section of the tool main page (as indicated in the 'transformation_config.xml' file); to be put into the './galaxy-dist/static/images' directory		 
 
 VII. License
 

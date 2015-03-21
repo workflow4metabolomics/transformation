@@ -1,9 +1,7 @@
 #!/usr/bin/Rscript --vanilla --slave --no-site-file
 
 
-library(batch) ## necessary for parseCommandArgs function
-args = parseCommandArgs(evaluate=FALSE)
-## interpretation of arguments given in command line as an R list of objects
+library(batch) ## parseCommandArgs
 
 source_local <- function(fname){
     argv <- commandArgs(trailingOnly = FALSE)
@@ -11,65 +9,59 @@ source_local <- function(fname){
     source(paste(base_dir, fname, sep="/"))
 }
 
-## Import the different functions
 source_local("transformation_script.R")
 
 
-##----------------
-## Example
-##----------------
 
-runExampleL <- FALSE
+rssVsGalL <- FALSE
 
-if(runExampleL) { ## example of arguments
+if(rssVsGalL) { ## for running with R outside the Galaxy environment during development of the script
 
-    ## prefix file in
-    pfxFilInpC <- "data/input/sacuri_"                       ## 'sacuri'
-    ## pfxFilInpC <- gsub("sacuri", "suvimax", pfxFilInpC)   ## 'suvimax'
-    ## pfxFilInpC <- gsub("sacuri", "bisphenol", pfxFilInpC) ## 'bisphenol'
+    ## 'example' input dir
+    exaDirInpC <- "example/input"
 
-    argLs <- list(dataMatrix_in = paste0(pfxFilInpC, "dataMatrix.tsv"),
+    argLs <- list(dataMatrix_in = file.path(exaDirInpC, "dataMatrix.tsv"),
                   method = c("log10")[1])
 
-    ## prefix file out
-    pfxFilOutC <- gsub("input", "output",
-                       gsub("dataMatrix.tsv", "", argLs[["dataMatrix_in"]]))
-    ## "output/sacuri_"
+    ## 'example' output dir
+    exaDirOutC <- gsub("input", "output", exaDirInpC)
 
     argLs <- c(argLs,
-               list(dataMatrix_out = paste0(pfxFilOutC, "dataMatrix.tsv"),
-                    information = paste0(pfxFilOutC, "information.txt")))
+               list(dataMatrix_out = file.path(exaDirOutC, "dataMatrix.tsv"),
+                    information = file.path(exaDirOutC, "information.txt")))
 
-    stopifnot(file.exists("data/output"))
+    stopifnot(file.exists(exaDirOutC))
 
-} else {
-
+} else
     argLs <- parseCommandArgs(evaluate=FALSE)
 
-}
 
-
-##----------------
-## Script
-##----------------
+##------------------------------
+## Initializing
+##------------------------------
 
 ## options
+##--------
 
 strAsFacL <- options()[["stringsAsFactors"]]
 options(stringsAsFactors=FALSE)
 
 ## constants
+##----------
 
+modNamC <- "Transformation" ## module name
 metVc <- c("log10") ## available methods
 
-## starting
+## log file
+##---------
 
 sink(argLs[["information"]])
 
-cat("\nStarting the 'Transformation' module: ",
+cat("\nStart of the '", modNamC, "' module: ",
     format(Sys.time(), "%a %d %b %Y %X"), "\n", sep="")
 
 ## loading
+##--------
 
 datMN <- t(as.matrix(read.table(argLs[["dataMatrix_in"]],
                                 check.names = FALSE,
@@ -79,18 +71,32 @@ datMN <- t(as.matrix(read.table(argLs[["dataMatrix_in"]],
 
 metC <- argLs[["method"]]
 
+## checking
+##---------
+
 if(!(metC %in% c("log10"))) {
     cat("Transformation method must be in: '", paste(metVc, collapse = "', '"), "'", sep="")
     sink()
     stop("See error above")
 }
 
-## script
+
+##------------------------------
+## Computation
+##------------------------------
+
 
 datMN <- transformF(datMN=datMN, ## dataMatrix
                     metC=metC)  ## transformation method
 
+
+##------------------------------
+## Ending
+##------------------------------
+
+
 ## saving
+##-------
 
 datDF <- cbind.data.frame(dataMatrix = colnames(datMN),
                           as.data.frame(t(datMN)))
@@ -101,11 +107,12 @@ write.table(datDF,
             sep = "\t")
 
 ## ending
+##-------
 
-cat("\nEnd of 'Transformation' Galaxy module call: ",
+cat("\nEnd of the '", modNamC, "' Galaxy module call: ",
     format(Sys.time(), "%a %d %b %Y %X"), "\n", sep = "")
 
-sink(NULL)
+sink()
 
 options(stringsAsFactors = strAsFacL)
 
