@@ -41,8 +41,8 @@ Description
  | Performs transformation of the dataMatrix intensity values aimed at stabilizing variance.
  | For mass spectrometry data, where multiplicative noise has been reported, logarithm transformation can be useful to make the peak intensity variance independent of the intensity mean (see for example Veselkov et al, 2011).
  
-| Veselkov et al (2011). Optimized Preprocessing of Ultra-Performance Liquid Chromatography/Mass Spectrometry Urinary Metabolic Profiles for Improved Information Recovery. Analytical Chemistry, 83:5864-5872. http://dx.doi.org/10.1021/ac201065j
- 
+| `Veselkov et al (2011). Optimized Preprocessing of Ultra-Performance Liquid Chromatography/Mass Spectrometry Urinary Metabolic Profiles for Improved Information Recovery. Analytical Chemistry, 83:5864-5872. &lt;http://dx.doi.org/10.1021/ac201065j&gt;`_
+
 -----------------
 Workflow position
 -----------------
