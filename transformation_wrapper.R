@@ -86,8 +86,8 @@ if(!(metC %in% c("log10"))) {
 ##------------------------------
 
 
-datMN <- transformF(datMN=datMN, ## dataMatrix
-                    metC=metC)  ## transformation method
+datMN <- transformF(datMN = datMN, ## dataMatrix
+                    metC = metC)  ## transformation method
 
 
 ##------------------------------

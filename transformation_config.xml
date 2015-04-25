@@ -1,4 +1,4 @@
-<tool id="Transformation" name="Transformation" version="2015.03.21">
+<tool id="Transformation" name="Transformation" version="2015.04.25">
 	<description>Transforms the dataMatrix intensity values</description>
 
 	<command interpreter="Rscript">
@@ -40,6 +40,7 @@ Description
 
  | Performs transformation of the dataMatrix intensity values aimed at stabilizing variance.
  | For mass spectrometry data, where multiplicative noise has been reported, logarithm transformation can be useful to make the peak intensity variance independent of the intensity mean (see for example Veselkov et al, 2011).
+ | For the logarithm transformation, log10(1+X) is used (to avoid returning -Inf for 0 values); NA values remain unchanged
  
 | `Veselkov et al (2011). Optimized Preprocessing of Ultra-Performance Liquid Chromatography/Mass Spectrometry Urinary Metabolic Profiles for Improved Information Recovery. Analytical Chemistry, 83:5864-5872. &lt;http://dx.doi.org/10.1021/ac201065j&gt;`_
 
@@ -75,9 +76,8 @@ Parameters
 	  
 Method
 	| Method to be used for transforming the intensity values of the dataMatrix:
-	| **log10**: intensities values are log10 transformed;
+	| **log10**: intensities values are log10 transformed: log10(1+X) is used to avoid generating -Inf for 0 values
 	| in case of negative intensities in the initial dataMatrix, an error is returned
-	| in case of 0 intensities in the initial dataMatrix, these intensities remain set to 0 after transformation
 	| in case of missing (NA) intensities in the initial dataMatrix, these intensities remain set to NA after transformation
 
 ------------

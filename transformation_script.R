@@ -1,7 +1,7 @@
 ## Etienne Thevenot
 ## W4M Core Development Team
 ## etienne.thevenot@cea.fr
-## March 21., 2015
+## 2015-04-25
 
 transformF <- function(datMN,
                        metC) {
@@ -41,9 +41,7 @@ transformF <- function(datMN,
                    "%)\n",
                    sep="")
 
-               datMN[zerMN] <- 1
-
-               trfMN <- log10(datMN)
+               trfMN <- log10(1 + datMN)
 
            }) ## end of 'log10' method
 
