@@ -1,47 +1,36 @@
-Tool: Transformation
+## ****** Transformation environment: ****** ##
+# version 0.1.0 (2015-04-30) E. Thevenot (W4M Core Development Team)
 
-I. Date: 2015-04-30
+## --- PERL compilator / libraries : --- ##
+NA
+--
 
-II. Authors and maintainer:
+## --- R bin and Packages : --- ##
+$ R --version
+R version 3.0.1 (2013-05-16) -- "Good Sport"
+Platform: x86_64-redhat-linux-gnu (64-bit)
 
-	Authors: Etienne Thevenot (1)
-	
-	(1) MetaboHUB Paris, CEA
-	
-	Maintainer: Etienne Thevenot (etienne.thevenot@cea.fr)
+The dependent libs are :
+NA
+-- 
 
-III. Funding
+## --- Binary dependencies --- ##
+NA
+--
 
-	Developed within MetaboHUB, The French Infrastructure in Metabolomics and Fluxomics (www.metabohub.fr/en)
+## --- Config : --- ##
+NA
+--
 
-IV. Usage restrictions
+## --- XML HELP PART --- ##
+images:
+transformation_workflowPositionImage
+--
 
-	Use of this tool is restricted to the service conditions of the MetaboHUB-IFB infrastructures.
-	For any question regarding the use of these services, please contact: etienne.thevenot@cea.fr
-	
-V. Requirements
+## --- DATASETS --- ##
+No data set ! waiting for galaxy pages
+--
 
-	none
-
-VI. Installation
-
-	5 files are required for installation:
-
-	1) 'README.txt'
-		Instructions for installation
-   
-	2) 'transformation_config.xml'
-		Configuration file; to be put into the './galaxy-dist/tools' directory ('Normalization/Transformation' subdirectory)
-		 
-	3) 'transformation_wrapper.R'
-		Wrapper code written in R aimed at launching the transformation_script.R given the arguments entered by the user through the Galaxy interface
-
-	4) 'transformation_script.R'
-		R code containing the computational functions
-		
-	5) 'transformation_workflowPositionImage.png'
-		Image for the help section of the tool main page (as indicated in the 'transformation_config.xml' file); to be put into the './galaxy-dist/static/images' directory		 
-
-VII. License
-
-	CeCILL
+## --- ??? COMMENTS ??? --- ##
+CeCILL license
+--
