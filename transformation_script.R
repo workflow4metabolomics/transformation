@@ -14,6 +14,36 @@ transformF <- function(datMN,
     ## transformation
 
     switch(metC,
+           log2 = {
+
+               cat("\n'log2' transformation\n", sep="")
+
+               if(length(which(datMN < 0)))
+                   stop("The 'dataMatrix' contains negative values")
+
+               zerMN <- datMN == 0
+
+               ## Number of missing values
+               nasN <- length(which(is.na(datMN)))
+               cat("\nMissing values in the 'dataMatrix': ",
+                   nasN,
+                   " (",
+                   round(nasN / cumprod(dim(datMN))[2] * 100),
+                   "%)\n",
+                   sep="")
+
+               ## Number of zero values
+               zerN <- length(which(zerMN))
+               cat("\nZero values in the 'dataMatrix': ",
+                   zerN,
+                   " (",
+                   round(zerN / cumprod(dim(datMN))[2] * 100),
+                   "%)\n",
+                   sep="")
+
+               trfMN <- log2(1 + datMN)
+
+           },
            log10 = {
 
                cat("\n'log10' transformation\n", sep="")

@@ -21,7 +21,7 @@ if(rssVsGalL) { ## for running with R outside the Galaxy environment during deve
     exaDirInpC <- "example/input"
 
     argLs <- list(dataMatrix_in = file.path(exaDirInpC, "dataMatrix.tsv"),
-                  method = c("log10")[1])
+                  method = c("log2", "log10")[1])
 
     ## 'example' output dir
     exaDirOutC <- gsub("input", "output", exaDirInpC)
@@ -50,7 +50,7 @@ options(stringsAsFactors=FALSE)
 ##----------
 
 modNamC <- "Transformation" ## module name
-metVc <- c("log10") ## available methods
+metVc <- c("log2", "log10") ## available methods
 
 ## log file
 ##---------
@@ -74,8 +74,8 @@ metC <- argLs[["method"]]
 ## checking
 ##---------
 
-if(!(metC %in% c("log10"))) {
-    cat("Transformation method must be in: '", paste(metVc, collapse = "', '"), "'", sep="")
+if(!(metC %in% metVc)) {
+    cat("Transformation method must be either '", paste(metVc, collapse = "', '"), "'\n", sep="")
     sink()
     stop("See error above")
 }
