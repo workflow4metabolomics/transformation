@@ -1,4 +1,4 @@
-<tool id="Transformation" name="Transformation" version="0.1.0; 2015-04-30">
+<tool id="Transformation" name="Transformation" version="2.0.0; 2015-04-30">
 	<description>Transforms the dataMatrix intensity values</description>
 
 	<command interpreter="Rscript">

@@ -1,5 +1,5 @@
 ## ****** Transformation environment: ****** ##
-# version 0.1.0 (2015-04-30) E. Thevenot (W4M Core Development Team)
+# version 2.0.0 (2015-04-30) E. Thevenot (W4M Core Development Team)
 
 ## --- PERL compilator / libraries : --- ##
 NA
