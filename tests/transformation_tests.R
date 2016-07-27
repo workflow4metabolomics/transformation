@@ -1,20 +1,11 @@
-#!/usr/bin/Rscript --vanilla --slave --no-site-file
+library(RUnit)
+
+wrapperF <- function(argVc) {
+
+        source("../transformation_script.R")
 
 
-library(batch) ## parseCommandArgs
-
-source_local <- function(fname){
-    argv <- commandArgs(trailingOnly = FALSE)
-    base_dir <- dirname(substring(argv[grep("--file=", argv)], 8))
-    source(paste(base_dir, fname, sep="/"))
-}
-
-source_local("transformation_script.R")
-
-argVc <- unlist(parseCommandArgs(evaluate=FALSE))
-
-
-#### Start_of_tested_code  <- function() {}
+#### Start_of_testing_code <- function() {}
 
 
 ##------------------------------
@@ -120,7 +111,32 @@ sink()
 options(stringsAsFactors = strAsFacL)
 
 
-#### End_of_tested_code <- function() {}
+#### End_of_testing_code <- function() {}
 
 
-rm(list = ls())
+    return(list(datDF = datDF))
+
+    rm(list = ls())
+
+}
+
+exaDirOutC <- "output"
+file.exists(exaDirOutC) || dir.create(exaDirOutC)
+
+tesArgLs <- list(input_log10 = c(method = "log10",
+                     .chkC = "checkEqualsNumeric(outLs[['datDF']]['HMDB03072', 'HU_021'], 4.817089, tolerance = 1e-6)"))
+
+for(tesC in names(tesArgLs))
+    tesArgLs[[tesC]] <- c(tesArgLs[[tesC]],
+                          dataMatrix_in = file.path(unlist(strsplit(tesC, "_"))[1], "dataMatrix.tsv"),
+                          dataMatrix_out = file.path(exaDirOutC, "dataMatrix.tsv"),
+                          information = file.path(exaDirOutC, "information.txt"))
+
+for(tesC in names(tesArgLs)) {
+    print(tesC)
+    outLs <- wrapperF(tesArgLs[[tesC]])
+    if(".chkC" %in% names(tesArgLs[[tesC]]))
+        stopifnot(eval(parse(text = tesArgLs[[tesC]][[".chkC"]])))
+}
+
+message("Checks successfully completed")
