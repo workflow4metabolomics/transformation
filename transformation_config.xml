@@ -26,9 +26,17 @@
 	<outputs>
 		<data name="dataMatrix_out" label="${tool.name}_${dataMatrix_in.name}" format="tabular" ></data>
 		<data name="information" label="${tool.name}_information.txt" format="txt"/>
-	</outputs>	
+	</outputs>
 	
-  <help>
+	<tests>
+	  <test>
+            <param name="dataMatrix_in" value="input-dataMatrix.tsv"/>
+            <param name="method" value="log10"/>
+            <output name="dataMatrix_out" file="output-dataMatrix.tsv"/>
+	  </test>
+	</tests>
+	
+	<help>
 
 .. class:: infomark
 
