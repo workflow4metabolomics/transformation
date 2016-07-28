@@ -1,14 +1,14 @@
 <tool id="Transformation" name="Transformation" version="2.0.2; 2016-07-27">
 	<description>Transforms the dataMatrix intensity values</description>
 
-	<command interpreter="Rscript">
-	   transformation_wrapper.R
+	<command><![CDATA[
+	Rscript $__tool_directory__/transformation_wrapper.R
 			dataMatrix_in "$dataMatrix_in"
 			method "$method"
 			
 			dataMatrix_out "$dataMatrix_out"
 			information "$information"
-	</command>
+	]]></command>
   
 	<inputs>
 		<param name="dataMatrix_in" type="data" label="Data matrix file" help="" format="tabular" />
