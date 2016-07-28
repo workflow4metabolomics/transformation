@@ -1,6 +1,10 @@
 <tool id="Transformation" name="Transformation" version="2.0.2; 2016-07-27">
 	<description>Transforms the dataMatrix intensity values</description>
 
+	<requirements>
+	  <requirement type="package" version="3.2.2">R</requirement>
+	  <requirement type="package">r-batch</requirement>
+	</requirements>
 	<command><![CDATA[
 	Rscript $__tool_directory__/transformation_wrapper.R
 			dataMatrix_in "$dataMatrix_in"
