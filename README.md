@@ -1,6 +1,8 @@
 ## Transformation of the data matrix  
 #### A Galaxy module from the [Workflow4metabolomics](http://workflow4metabolomics.org) project
 
+Status: [![Build Status](https://travis-ci.org/workflow4metabolomics/transformation.svg?branch=master)](https://travis-ci.org/workflow4metabolomics/transformation).
+
 ### Description
 
 **Version:** 2.0.2  
