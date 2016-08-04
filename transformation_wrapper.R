@@ -1,5 +1,4 @@
-#!/usr/bin/Rscript --vanilla --slave --no-site-file
-
+#!/usr/bin/env Rscript
 
 library(batch) ## parseCommandArgs
 
@@ -12,9 +11,6 @@ source_local <- function(fname){
 source_local("transformation_script.R")
 
 argVc <- unlist(parseCommandArgs(evaluate=FALSE))
-
-
-#### Start_of_tested_code  <- function() {}
 
 
 ##------------------------------
@@ -31,33 +27,7 @@ options(stringsAsFactors=FALSE)
 ##----------
 
 modNamC <- "Transformation" ## module name
-metVc <- c("log2", "log10") ## available methods
 
-topEnvC <- environment()
-flagC <- "\n"
-
-## functions
-##----------
-
-flgF <- function(tesC,
-                 envC = topEnvC,
-                 txtC = NA) { ## management of warning and error messages
-
-    tesL <- eval(parse(text = tesC), envir = envC)
-
-    if(!tesL) {
-
-        sink(NULL)
-        stpTxtC <- ifelse(is.na(txtC),
-                          paste0(tesC, " is FALSE"),
-                          txtC)
-
-        stop(stpTxtC,
-             call. = FALSE)
-
-    }
-
-} ## flgF
 
 ## log file
 ##---------
@@ -77,11 +47,6 @@ datMN <- t(as.matrix(read.table(argVc[["dataMatrix_in"]],
                                 sep = "\t")))
 
 metC <- argVc[["method"]]
-
-## checking
-##---------
-
-flgF("metC %in% metVc", txtC = paste0("Transformation method must be either '", paste(metVc, collapse = "', '"), "'"))
 
 
 ##------------------------------
@@ -118,9 +83,6 @@ cat("\nEnd of the '", modNamC, "' Galaxy module call: ",
 sink()
 
 options(stringsAsFactors = strAsFacL)
-
-
-#### End_of_tested_code <- function() {}
 
 
 rm(list = ls())

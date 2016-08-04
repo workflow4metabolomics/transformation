@@ -1,0 +1,10 @@
+
+Start of the 'Transformation' module: Thu 04 Aug 2016 08:58:11 PM
+
+Missing values in the 'dataMatrix': 4 (4%)
+
+Zero values in the 'dataMatrix': 3 (3%)
+
+'Square root' transformation
+
+End of the 'Transformation' Galaxy module call: Thu 04 Aug 2016 08:58:11 PM

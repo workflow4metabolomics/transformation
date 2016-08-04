@@ -5,41 +5,41 @@
 
 transformF <- function(datMN,
                        metC) {
-
+    
     ## options
-
+    
     optStrAsFacL <- options()[["stringsAsFactors"]]
     options(stringsAsFactors = FALSE)
-
+    
+    ## checking		     
+    
+    if(length(which(datMN < 0)))
+        stop("The 'dataMatrix' contains negative values")
+    
+    ## Number of missing values
+    nasN <- length(which(is.na(datMN)))
+    cat("\nMissing values in the 'dataMatrix': ",
+        nasN,
+        " (",
+        round(nasN / cumprod(dim(datMN))[2] * 100),
+        "%)\n",
+        sep="")
+    
+    ## Number of zero values
+    zerN <- length(which(datMN == 0))
+    cat("\nZero values in the 'dataMatrix': ",
+        zerN,
+        " (",
+        round(zerN / cumprod(dim(datMN))[2] * 100),
+        "%)\n",
+        sep="")
+    
     ## transformation
-
+    
     switch(metC,
            log2 = {
 
                cat("\n'log2' transformation\n", sep="")
-
-               if(length(which(datMN < 0)))
-                   stop("The 'dataMatrix' contains negative values")
-
-               zerMN <- datMN == 0
-
-               ## Number of missing values
-               nasN <- length(which(is.na(datMN)))
-               cat("\nMissing values in the 'dataMatrix': ",
-                   nasN,
-                   " (",
-                   round(nasN / cumprod(dim(datMN))[2] * 100),
-                   "%)\n",
-                   sep="")
-
-               ## Number of zero values
-               zerN <- length(which(zerMN))
-               cat("\nZero values in the 'dataMatrix': ",
-                   zerN,
-                   " (",
-                   round(zerN / cumprod(dim(datMN))[2] * 100),
-                   "%)\n",
-                   sep="")
 
                trfMN <- log2(1 + datMN)
 
@@ -48,32 +48,17 @@ transformF <- function(datMN,
 
                cat("\n'log10' transformation\n", sep="")
 
-               if(length(which(datMN < 0)))
-                   stop("The 'dataMatrix' contains negative values")
-
-               zerMN <- datMN == 0
-
-               ## Number of missing values
-               nasN <- length(which(is.na(datMN)))
-               cat("\nMissing values in the 'dataMatrix': ",
-                   nasN,
-                   " (",
-                   round(nasN / cumprod(dim(datMN))[2] * 100),
-                   "%)\n",
-                   sep="")
-
-               ## Number of zero values
-               zerN <- length(which(zerMN))
-               cat("\nZero values in the 'dataMatrix': ",
-                   zerN,
-                   " (",
-                   round(zerN / cumprod(dim(datMN))[2] * 100),
-                   "%)\n",
-                   sep="")
-
                trfMN <- log10(1 + datMN)
 
-           }) ## end of 'log10' method
+           },
+           sqrt = {
+
+               cat("\n'Square root' transformation\n", sep="")
+               
+               trfMN <- sqrt(datMN)
+
+
+           }) ## end of method
 
 
     ## returning

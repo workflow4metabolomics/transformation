@@ -5,8 +5,8 @@ Status: [![Build Status](https://travis-ci.org/workflow4metabolomics/transformat
 
 ### Description
 
-**Version:** 2.0.2  
-**Date:** 2016-07-27  
+**Version:** 2.2.0  
+**Date:** 2016-08-04  
 **Author:** Etienne A. Thevenot (CEA, LIST, MetaboHUB, W4M Core Development Team)   
 **Email:** [etienne.thevenot(at)cea.fr](mailto:etienne.thevenot@cea.fr)  
 **Citation:** Thevenot E.A., Roux A., Xu Y., Ezan E. and Junot C. (2015). Analysis of the human adult urinary metabolome variations with age, body mass index and gender by implementing a comprehensive workflow for univariate and OPLS statistical analyses. *Journal of Proteome Research*, **14**:3322-3335. [doi:10.1021/acs.jproteome.5b00354](http://dx.doi.org/10.1021/acs.jproteome.5b00354)  
@@ -25,9 +25,17 @@ Status: [![Build Status](https://travis-ci.org/workflow4metabolomics/transformat
 
 ### Tests
 
-The code in the wrapper can be tested by running the **tests/transformation_tests.R** in R  
+The code in the wrapper can be tested by running the 'runit/transformation_runtests.R' file  
 
 ### News
+
+##### CHANGES IN VERSION 2.2.0  
+
+NEW FEATURE  
+
+    o Square root transformation now available  
+    
+***
 
 ##### CHANGES IN VERSION 2.0.2  
 
