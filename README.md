@@ -1,5 +1,7 @@
-## Transformation of the data matrix  
-#### A Galaxy module from the [Workflow4metabolomics](http://workflow4metabolomics.org) project
+Transformation of the data matrix  
+=================================
+
+A Galaxy module from the [Workflow4metabolomics](http://workflow4metabolomics.org) infrastructure  
 
 Status: [![Build Status](https://travis-ci.org/workflow4metabolomics/transformation.svg?branch=master)](https://travis-ci.org/workflow4metabolomics/transformation).
 
@@ -16,16 +18,28 @@ Status: [![Build Status](https://travis-ci.org/workflow4metabolomics/transformat
 
 ### Installation
 
-* Configuration file: **transformation_config.xml**
-* Image files: **static/images/transformation_workflowPositionImage.png**   
-* Wrapper file: **transformation_wrapper.R**  
+* Configuration file: `transformation_config.xml`  
+* Image files: `static/images/transformation_workflowPositionImage.png`   
+* Wrapper file: `transformation_wrapper.R`  
 * R packages  
     + **batch** from CRAN  
-> install.packages("batch", dep=TRUE)   
-
+ 
+    ```r
+    install.packages("batch", dep=TRUE)  
+    ```
+    
 ### Tests
 
-The code in the wrapper can be tested by running the 'runit/transformation_runtests.R' file  
+The code in the wrapper can be tested by running the `runit/transformation_runtests.R` R file
+
+You will need to install **RUnit** package in order to make it run:
+```r
+install.packages('RUnit', dependencies = TRUE)
+```
+
+### Working example
+
+See the **W4M00001b_sacurine-complete** or **W4M00002_mtbls2** shared histories in the **Shared Data/Published Histories** menu (https://galaxy.workflow4metabolomics.org/history/list_published)  
 
 ### News
 
@@ -33,14 +47,10 @@ The code in the wrapper can be tested by running the 'runit/transformation_runte
 
 NEW FEATURE  
 
-    o Square root transformation now available  
-    
-***
+ * Square root transformation now available  
 
 ##### CHANGES IN VERSION 2.0.2  
 
 INTERNAL MODIFICATION  
 
-    o Creating tests for R code  
-    
-***
+ * Creating tests for R code  

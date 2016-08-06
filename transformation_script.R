@@ -13,8 +13,11 @@ transformF <- function(datMN,
     
     ## checking		     
     
-    if(length(which(datMN < 0)))
-        stop("The 'dataMatrix' contains negative values")
+    if(length(which(datMN < 0))) {
+        cat("\nThe 'dataMatrix' contains negative values\n")
+        sink()
+        stop("The 'dataMatrix' contains negative values", call. = FALSE)
+    }
     
     ## Number of missing values
     nasN <- length(which(is.na(datMN)))
