@@ -2,7 +2,6 @@
   <description>Transforms the dataMatrix intensity values</description>
   
   <requirements>
-    <requirement type="package" version="3.2.2">R</requirement>
     <requirement type="package">r-batch</requirement>
   </requirements>
 
