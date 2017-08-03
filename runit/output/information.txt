@@ -1,5 +1,5 @@
 
-Start of the 'Transformation' module: Thu 04 Aug 2016 08:58:11 PM
+Start of the 'Transformation' module: Thu 03 Aug 2017 16:41:30
 
 Missing values in the 'dataMatrix': 4 (4%)
 
@@ -7,4 +7,24 @@ Zero values in the 'dataMatrix': 3 (3%)
 
 'Square root' transformation
 
-End of the 'Transformation' Galaxy module call: Thu 04 Aug 2016 08:58:11 PM
+End of the 'Transformation' Galaxy module call: Thu 03 Aug 2017 16:41:30
+
+
+
+============================================================================
+Additional information about the call:
+
+1) Parameters:
+               value                         
+dataMatrix_in  "runit/input/dataMatrix.tsv"  
+dataMatrix_out "runit/output/dataMatrix.tsv" 
+information    "runit/output/information.txt"
+method         "sqrt"                        
+
+2) Session Info:
+R version 3.4.1 (2017-06-30) 
+Main packages:
+batch 1.1.4 	
+Other loaded packages:
+compiler 3.4.1 	
+============================================================================
